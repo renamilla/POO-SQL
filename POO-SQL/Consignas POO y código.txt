@@ -1,0 +1,190 @@
+Escribe un programa basado en la programación orientada a objetos (POO) con
+herencia simple en base al video juego Mario Bros:
+
+Crear una clase base llamada “Personaje”: esta clase contendrá los atributos y
+métodos comunes a todos los personajes del juego. Por ej. los atributos podrían
+ser nombre, posición_x, posición_y y vidas. Los métodos podrían ser: mover,
+saltar y caer.
+
+
+class Personaje:
+    def _init_(self, nombre, posicion_x, posicion_y, vidas):
+        self.nombre = nombre
+        self.posicion_x = posicion_x
+        self.posicion_y = posicion_y
+        self.vidas = vidas
+
+    def mover(self, direccion):
+        print(f"{self.nombre} se mueve hacia {direccion}")
+
+    def saltar(self, altura):
+        print(f"{self.nombre} salta {altura} metros")
+
+    def caer(self):
+        print(f"{self.nombre} cae al suelo")
+
+
+Crea clases derivadas para cada personaje específico. Estas clases heredarán de
+la clase base “Personaje” y podrán tener atributos y métodos adicionales. Por ej.
+la clase Mario podría tener un método adicional lanzar_fuego() mientras que la
+clase Luigi podría tener un método adicional usar_hongo().
+
+
+class Mario(Personaje):
+    def lanzar_fuego(self):
+        print(f"{self.nombre} lanza una bola de fuego")
+
+
+class Luigi(Personaje):
+    def usar_hongo(self):
+        print(f"{self.nombre} usa un hongo para crecer")
+
+
+
+Crea clases base para los enemigos. Esta clase contendrá los atributos y métodos
+comunes a todos los enemigos. Por ejemplo, los métodos podrían ser tipo,
+posicion_x, posicion_y, daño y, los métodos podrían ser mover, atacar, etc.
+
+
+class Enemigo:
+    def _init_(self, tipo, posicion_x, posicion_y, daño):
+        self.tipo = tipo
+        self.posicion_x = posicion_x
+        self.posicion_y = posicion_y
+        self.daño = daño
+
+    def mover(self, direccion):
+        print(f"{self.tipo} se mueve hacia {direccion}")
+
+    def atacar(self, objetivo):
+        print(f"{self.tipo} ataca a {objetivo}")
+
+
+Crear clases derivadas para cada tipo de enemigo. Estas clases heredarán de la
+clase base “Enemigo” y podrán tener atributos y métodos adicionales. Por ej. la
+clase “Koopa Troopa” podría tener un método adicional usar_casco(), mientras
+que la clase “Goomba” podría tener un método saltar()
+
+
+class KoopaTroopa(Enemigo):
+    def usar_casco(self):
+        print(f"{self.tipo} usa su caparazón como arma")
+
+
+class Goomba(Enemigo):
+    def saltar(self):
+        print(f"{self.tipo} salta hacia {self.posicion_x+1}, {self.posicion_y}")
+
+
+
+Nota: Para la implementación de los métodos simplemente imprime en pantalla un
+texto que explique lo que haría el personaje.
+
+
+
+
+Escribe un programa basado en la programación orientada a objetos (POO)
+con herencia simple en base al juego de ajedrez:
+
+1- Crear una clase base llamada Pieza. Esta clase representará a todas las
+piezas en el ajedrez. Los atributos de esta clase podrían incluir color (blanco o
+negro)y posicion (la ubicación actual de la pieza en el tablero). El método
+podrían ser capturar (que elimina una pieza del tablero).
+
+
+class Pieza:
+    def _init_(self, color, posicion):
+        self.color = color
+        self.posicion = posicion
+    def capturar(self):
+        print("La pieza ha sido capturada.")
+
+
+2. Crear clases derivadas para cada tipo de pieza. Estas clases heredarán de
+la clase Pieza y podrían agregar métodos según sea necesario. Por ejemplo, la
+clase Peon podría tener un método adicional avanzar que mueve al peón
+hacia adelante.
+
+
+class Peon(Pieza):
+    def avanzar(self):
+        print("El peón avanza hacia adelante.")
+
+
+class Torre(Pieza):
+    def moverse(self):
+        print("La torre se mueve en línea recta por filas o columnas.")
+
+
+class Alfil(Pieza):
+    def moverse(self):
+        print("El alfil se mueve en línea diagonal.")
+
+
+class Caballo(Pieza):
+    def moverse(self):
+        print("El caballo se mueve en forma de L.")
+
+
+class Reina(Pieza):
+    def moverse(self):
+        print("La reina se mueve en línea recta, horizontal y diagonal.")
+
+
+class Rey(Pieza):
+    def moverse(self):
+        print("El rey se mueve en cualquier dirección, pero solo una casilla a la vez.")
+
+
+
+3. Crear una clase Tablero que represente el tablero de ajedrez. Esta clase
+podría tener un atributo piezas que es una lista de objetos Pieza y un método
+dibujar que imprime el estado actual del tablero.
+
+
+class Tablero:
+    def _init_(self):
+        self.piezas = []
+
+    def agregar_pieza(self, pieza):
+        self.piezas.append(pieza)
+
+    def dibujar(self):
+        print("Estado actual del tablero:")
+        for pieza in self.piezas:
+            print(f"Pieza: {type(pieza)._name_}, Color: {pieza.color}, Posición: {pieza.posicion}")
+
+
+Nota: Para la implementación de los métodos de las piezas simplemente
+imprime en pantalla un texto que explique lo que haría la pieza. En el caso del
+tablero el método dibujar debería mostrar una lista con las piezas presentes
+en el tablero y en qué posición se encuentran.
+
+
+tablero = Tablero()
+
+peon_blanco = Peon("Blanco", "E2")
+torre_negra = Torre("Negro", "A8")
+alfil_blanco = Alfil("Blanco", "C1")
+caballo_negro = Caballo("Negro", "B8")
+reina_blanca = Reina("Blanco", "D1")
+rey_negro = Rey("Negro", "E8")
+
+tablero.agregar_pieza(peon_blanco)
+tablero.agregar_pieza(torre_negra)
+tablero.agregar_pieza(alfil_blanco)
+tablero.agregar_pieza(caballo_negro)
+tablero.agregar_pieza(reina_blanca)
+tablero.agregar_pieza(rey_negro)
+
+tablero.dibujar()
+
+peon_blanco.avanzar()
+torre_negra.moverse()
+alfil_blanco.moverse()
+caballo_negro.moverse()
+reina_blanca.moverse()
+rey_negro.moverse()
+
+peon_blanco.capturar()
+
